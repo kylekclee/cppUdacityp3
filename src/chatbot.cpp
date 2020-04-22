@@ -41,10 +41,19 @@ ChatBot::~ChatBot()
         _image = NULL;
     }
 }
-
 //// STUDENT CODE
 ////
-
+ChatBot::ChatBot(const ChatBot &other){
+    _image = other._image;
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+}
+ChatBot& ChatBot::operator=(const ChatBot &other){
+    _image = other._image;
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+  return *this;
+}
 ////
 //// EOF STUDENT CODE
 
