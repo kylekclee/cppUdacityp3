@@ -41,8 +41,10 @@ ChatBot::~ChatBot()
         _image = NULL;
     }
 }
+
 //// STUDENT CODE
 ////
+
 ChatBot::ChatBot(const ChatBot &other){ //copy constructor
     std::cout << "ChatBot Copy Constructor" << std::endl;
     _image = other._image;
@@ -91,6 +93,7 @@ ChatBot& ChatBot::operator=(ChatBot &&other){ //move asignment
   
   return *this;
 }
+
 ////
 //// EOF STUDENT CODE
 
