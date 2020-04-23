@@ -43,15 +43,52 @@ ChatBot::~ChatBot()
 }
 //// STUDENT CODE
 ////
-ChatBot::ChatBot(const ChatBot &other){
+ChatBot::ChatBot(const ChatBot &other){ //copy constructor
+    std::cout << "ChatBot Copy Constructor" << std::endl;
     _image = other._image;
     _chatLogic = other._chatLogic;
     _rootNode = other._rootNode;
 }
-ChatBot& ChatBot::operator=(const ChatBot &other){
+ChatBot& ChatBot::operator=(const ChatBot &other){ //copy assignment
+  
+    std::cout << "ChatBot assignment operator" << std::endl;
     _image = other._image;
     _chatLogic = other._chatLogic;
     _rootNode = other._rootNode;
+  return *this;
+}
+
+ChatBot::ChatBot(ChatBot &&other){ //move constructor
+    std::cout << "ChatBot move constructor" << std::endl;
+  
+    _image = other._image;
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+  
+    delete other._image; 
+    other._image = NULL;
+   //the destructor does not invalidate chatlogic and root node 
+    //delete other._chatLogic;
+    other._chatLogic = nullptr;
+    other._rootNode = nullptr;
+   
+}
+
+ChatBot& ChatBot::operator=(ChatBot &&other){ //move asignment 
+    std::cout << "ChatBot move assignment constructor" << std::endl;
+  if (this == &other){
+    return *this;  
+  }
+      _image = other._image;
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+  //which one is delete vs nullptr..?
+  	delete other._image;
+    other._image = NULL;
+    //delete other._chatLogic;
+    other._chatLogic = nullptr;
+    other._rootNode = nullptr;
+  
   return *this;
 }
 ////
